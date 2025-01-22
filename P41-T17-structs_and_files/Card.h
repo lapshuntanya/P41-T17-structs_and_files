@@ -16,7 +16,7 @@ struct Card
 		number = rand() * 1'000'000 + rand();
 		cash = 1'000;
 	}
-
+	
 	void showCard() {
 		cout << "+++++++++++++++++++++++++++++\n";
 		cout << "|\tClient: " << name << endl;
