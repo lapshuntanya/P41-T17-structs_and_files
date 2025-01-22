@@ -1,4 +1,5 @@
 ﻿#include "Card.h"
+#include "ArrayTemplate.h"
 #define LOAD_OR_CREATE 0 //1-load, 0-create
 
 int main()
@@ -66,10 +67,35 @@ int main()
         cout << "================================\n";
         cin >> menu;
 
+        switch (menu)
+        {
+        case 1: for (int i = 0; i < NClients; i++)
+                {
+                    arrClients[i].showCard();
+                }
+              break;
+        case 2:
+        {
+            Card temp; //"undefined", 0, 0
+            //cin.ignore();
+            temp.createCard();
+            addItemBack(arrClients, NClients, temp);            
+        }break;
+        }
 
     } while (menu != 0);
 
     //------------------------------------------------
     // save
-
+    fopen_s(&file_bank, "all_clients.bin", "wb");
+    if (file_bank == nullptr) cout << "Error: not saved!\n";
+    else {
+        fwrite(&NClients, sizeof(int), 1, file_bank);
+        for (int i = 0; i < NClients; i++)
+        {
+            arrClients[i].saveToBinFile(file_bank);
+        }
+        fclose(file_bank);
+        cout << "Saved!\n";
+    }
 }
