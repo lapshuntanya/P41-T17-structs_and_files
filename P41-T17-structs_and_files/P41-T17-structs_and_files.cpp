@@ -1,6 +1,6 @@
 ﻿#include "Card.h"
 #include "ArrayTemplate.h"
-#define LOAD_OR_CREATE 0 //1-load, 0-create
+#define LOAD_OR_CREATE 1 //1-load, 0-create
 
 int main()
 {
@@ -49,7 +49,20 @@ int main()
         {"Kovalenko Yehor", 5556667, 1000}
     };
 #else
-    //load
+    fopen_s(&file_bank, "all_clients.bin", "rb");
+    if (file_bank == nullptr) cout << "Error: not loaded!\n";
+    else {
+        fread(&NClients, sizeof(int), 1, file_bank);
+        arrClients = new Card[NClients];
+
+        for (int i = 0; i < NClients; i++)
+        {
+            arrClients[i].loadFromBinFile(file_bank);
+        }
+        fclose(file_bank);
+        cout << "Loaded!\n";
+    }
+
 #endif
 
     //------------------------------------------------
