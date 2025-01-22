@@ -68,6 +68,9 @@ int main()
     //------------------------------------------------
     // menu
     int menu = 0;
+    int numCard = 0;
+    int id = -1;
+
     do
     {
         cout << "================================\n";
@@ -75,6 +78,7 @@ int main()
         cout << "================================\n";
         cout << "|\t 1. Show all clients.\n";
         cout << "|\t 2. Add a new client.\n";
+        cout << "|\t 3. Delete client by card.\n";
         cout << "================================\n";
         cout << "|\t 0. Save and Exit.\n";
         cout << "================================\n";
@@ -94,6 +98,26 @@ int main()
             temp.createCard();
             addItemBack(arrClients, NClients, temp);            
         }break;
+
+        case 3:
+            cout << "Input number of card: ";
+            cin >> numCard;
+            id = -1;
+            for (int i = 0; i < NClients; i++)
+            {
+                if (arrClients[i].number == numCard) {
+                    id = i;                   
+                    break;
+                }
+            }
+            if (id != -1) {
+                cout << "Delete: " << arrClients[id].name << endl;
+                deleteItem(arrClients, NClients, id);
+            }
+            else {
+                cout << "Not found: " << numCard << endl;
+            }
+            break;
         }
 
     } while (menu != 0);

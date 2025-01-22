@@ -282,3 +282,24 @@ void addItemPos(T*& arr, int& size, int pos, T value)
 	//5
 	arr = tmp;
 }
+
+template <typename T>
+void deleteItem(T*& arr, int& size, int index) {
+	if (index < 0 || index >= size) {
+		return;
+	}
+	T* t = new T[size - 1];
+	for (int i = 0; i < size-1; i++) {
+		if (i < index) {
+			t[i] = arr[i];
+		}
+		else {
+			t[i] = arr[i + 1];
+		}
+	}
+	size--;
+	if (arr != nullptr) {
+		delete[] arr;
+	}
+	arr = t;
+}
