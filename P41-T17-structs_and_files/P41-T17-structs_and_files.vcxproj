@@ -130,6 +130,7 @@
     <ClCompile Include="P41-T17-structs_and_files.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayTemplate.h" />
     <ClInclude Include="Card.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
