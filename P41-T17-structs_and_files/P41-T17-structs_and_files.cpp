@@ -77,7 +77,7 @@ int main()
         case 2:
         {
             Card temp; //"undefined", 0, 0
-            //cin.ignore();
+            cin.ignore();
             temp.createCard();
             addItemBack(arrClients, NClients, temp);            
         }break;
